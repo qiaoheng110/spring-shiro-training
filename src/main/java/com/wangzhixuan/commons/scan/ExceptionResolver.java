@@ -29,7 +29,7 @@ public class ExceptionResolver implements HandlerExceptionResolver {
 										 HttpServletResponse response, Object handler, Exception e) {
 		// log记录异常
 		logger.error(e.getMessage(), e);
-		// 非控制器请求照成的异常
+		// 非控制器请求造成的异常
 		if (!(handler instanceof HandlerMethod)) {
 			return new ModelAndView("error/500");
 		}
@@ -46,7 +46,7 @@ public class ExceptionResolver implements HandlerExceptionResolver {
 		}
 
 		// 页面指定状态为500，便于上层的resion或者nginx的500页面跳转，由于error/error不适合对用户展示
-//		response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+        // response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 		return new ModelAndView("error/500");
 	}
 
